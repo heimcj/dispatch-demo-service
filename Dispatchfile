@@ -4,7 +4,7 @@ resource:
   docker-image:
     param:
       digest: $(inputs.resources.docker-image.digest)
-      url: docker.io/<your-dockerhub-user>/helloworld:$(context.build.name)
+      url: docker.io/heimcj@hotmail.com/helloworld:$(context.build.name)
     type: image
   helloworld-git:
     param:
@@ -13,7 +13,7 @@ resource:
     type: git
   gitops-git:
     param:
-      url: https://github.com/<your-github-user>/cicd-hello-world-gitops
+      url: https://github.com/heimcj/cicd-hello-world-gitops
     type: git
 
 task:
@@ -41,7 +41,7 @@ task:
       workingDir: /workspace/gitops-git
       args:
       - -git-revision=$(context.git.commit)
-      - -substitute=imageName=<your github user>/helloworld@$(inputs.resources.docker-image.digest)
+      - -substitute=imageName=heimcj/helloworld@$(inputs.resources.docker-image.digest)
       - -scm-provider=github
 
 actions:
